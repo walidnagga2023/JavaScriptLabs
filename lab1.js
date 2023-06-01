@@ -86,5 +86,42 @@ for(let i = 0; i < images.length; i++){
         console.log(specialChar(72,'-'));
     }
 }
-// PRESENTATION OF DATA IMAGES ARRAY
+
+// PRESENTATION OF DATA IMAGES ARRAY END
+// Scenario 2
+
+// A CONSTRUCTOR
+let Image = function(title, artist, date){
+    this.title = title;
+    this.artist = artist;
+    this.date = date;
+};
+// A FACTORY
+let getImage = function(title, artist, date){
+        let _title = title;
+        let _artist = artist;
+        let _date = date;
+        return{
+            _title, 
+            _artist, 
+            _date
+        };
+    };
+ 
+
+
+let images1 = [];
+for(let i = 1; i<images.length; i++){
+    images1[i] = new Image(images[i].title,images[i].artist, images[i].date); 
+}
+
+
+let images2 = [];
+for(let i = 1; i < images1.length; i++){
+ images2[i] = getImage(images1[i].title, images1[i].artist, images1[i].date);
+ console.log(specialChar(2,' ')+images2[i]._title + images2[i]._artist + images2[i]._date);
+ console.log(specialChar(72,'-'));
+}
+
+    
 
