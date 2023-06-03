@@ -1,4 +1,4 @@
-// THE DATA IMAGES ARRAY
+// SCENARIO 1 START
 let images = [
     {
         title:"Title",
@@ -56,9 +56,17 @@ let images = [
         date:"1512"
     },
 ];
-// THE DATA IMAGES ARRAY END
 
-// PRESENTATION OF DATA IMAGES ARRAY
+let specialChar = function(nbr, x){
+    let s = x;
+    do{
+        s += x;
+        nbr--;
+    }while(nbr > 0);
+    return s;  
+    
+}
+
 for(let i = 1; i < images.length; i++){
     for(let j = 0; j < (28 - images[i].title.indexOf("  ")); j++){
         images[i].title += " ";
@@ -67,35 +75,16 @@ for(let i = 1; i < images.length; i++){
         images[i].artist += " ";
     }
 }
-let specialChar = function(nbr, x){
-    let s = x;
-    do{
-        s += x;
-        nbr--;
-    }while(nbr > 0);
-    return s;  
 
-}
-for(let i = 0; i < images.length; i++){
-    if(i==0){
-        console.log(specialChar(5,' ')+images[i].title +specialChar(23,' ')+ images[i].artist +specialChar(18,' ')+ images[i].date);
-        console.log(specialChar(72,'-'));
-    }else{
-        
-        console.log(specialChar(2,' ')+images[i].title + images[i].artist + images[i].date);
-        console.log(specialChar(72,'-'));
-    }
-}
-
-// PRESENTATION OF DATA IMAGES ARRAY END
-// Scenario 2
-
+    
 // A CONSTRUCTOR
 let Image = function(title, artist, date){
     this.title = title;
     this.artist = artist;
     this.date = date;
 };
+
+
 // A FACTORY
 let getImage = function(title, artist, date){
         let _title = title;
@@ -107,21 +96,22 @@ let getImage = function(title, artist, date){
             _date
         };
     };
- 
-
-
 let images1 = [];
-for(let i = 1; i<images.length; i++){
+for(let i = 0; i<images.length; i++){
     images1[i] = new Image(images[i].title,images[i].artist, images[i].date); 
 }
 
-
 let images2 = [];
-for(let i = 1; i < images1.length; i++){
- images2[i] = getImage(images1[i].title, images1[i].artist, images1[i].date);
- console.log(specialChar(2,' ')+images2[i]._title + images2[i]._artist + images2[i]._date);
- console.log(specialChar(72,'-'));
-}
-
+for(let i = 0; i < images1.length; i++){
+    images2[i] = getImage(images1[i].title, images1[i].artist, images1[i].date);
+    if(i==0){
+        console.log(specialChar(72,'-'));
+        console.log(specialChar(5,' ')+images2[i]._title +specialChar(23,' ')+ images2[i]._artist +specialChar(18,' ')+ images[i]._date);
+        console.log(specialChar(72,'-'));
+    }else{
+        console.log(specialChar(2,' ')+images2[i]._title + images2[i]._artist + images2[i]._date);
+        console.log(specialChar(72,'-'));
+    }
     
+}
 
